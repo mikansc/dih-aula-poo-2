@@ -5,23 +5,18 @@ class Program
 {
   static void Main(string[] args)
   {
-    PagamentoBoleto boleto = new PagamentoBoleto();
-    boleto.DataVencimento = new DateTime(2022, 06, 14); // antiga
-    boleto.Pagar(100.00M);
 
-    PagamentoBoleto boleto2 = new PagamentoBoleto();
-    boleto2.DataVencimento = new DateTime(2022, 06, 20); // futura
-    boleto2.Pagar(100.00M);
+    PagamentoPix pagamento = new PagamentoPix(DateTime.Now, 100.00M, "Pagamento pela aula do tio Mika");
 
-    PagamentoPix pix = new PagamentoPix();
-    pix.DataVencimento = new DateTime(2022, 06, 10); // antiga
-    pix.Pagar(49.99M);
 
-    Pagamento umPagamento = new PagamentoBoleto();
-    Pagamento outroPagamento = new PagamentoPix();
+    PagamentoPix pagamento1 = new PagamentoPix
+    {
+      Id = Guid.NewGuid(),
+      DataPagamento = DateTime.Now
+    };
 
-    PagamentoBoleto pagamentoDowncasting = (PagamentoBoleto)new Pagamento();
 
-    IList<Pagamento> listaPagamentos = new List<Pagamento>();
+    pagamento.Pagar(150.05M, new DateTime(2022, 06, 22));
+
   }
 }
